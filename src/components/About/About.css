@@ -1,0 +1,29 @@
+.about {
+  display: flex;
+  justify-content: center;
+  gap: 56px;
+  margin: 80px 216px 80px 104px;
+}
+
+.about__info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 51px;
+}
+
+.about__title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1a1b22;
+  margin: 0 0 24px 0;
+}
+.about__text {
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
+  margin: 0;
+}
