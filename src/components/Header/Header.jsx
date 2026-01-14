@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 
-function Header() {
+function Header({ handleLoginClick }) {
   return (
     <header className="header">
       <div className="header__nav">
@@ -12,7 +12,11 @@ function Header() {
             Home
           </button>
         </NavLink>
-        <button type="button" className="header_signin-btn">
+        <button
+          type="button"
+          className="header_signin-btn"
+          onClick={handleLoginClick}
+        >
           Sign in
         </button>
       </div>

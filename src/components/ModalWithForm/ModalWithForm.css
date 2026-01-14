@@ -1,0 +1,129 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.modal_opened {
+  visibility: visible;
+}
+
+.modal__title {
+  margin: 0 0 24px;
+  font-family: "Cabinet", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.modal__close {
+  position: absolute;
+  top: -50px;
+  right: -47px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__content {
+  background-color: #fff;
+  position: relative;
+  padding: 28px 28px 36px;
+  max-width: 430px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20px;
+  top: -271px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+}
+
+.modal__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal__secondary-button {
+  background: none;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #00000080;
+}
+
+.modal__label {
+  font-family: "Cabinet", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000;
+}
+
+.modal__legend {
+  margin-bottom: 12px;
+}
+
+.modal__input {
+  display: block;
+  margin-top: 8px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+.modal__input_type_error {
+  border-bottom: 2px solid #d0021b;
+  outline: none;
+}
+.modal__input::placeholder {
+  color: #8a8a8a;
+}
+
+.modal__submit {
+  border-radius: 4px;
+  padding: 8px 16px;
+  border-style: none;
+  background-color: #000;
+  color: #fff;
+  font-family: "Cabinet", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  width: 30%;
+}
+
+.modal__submit:hover {
+  background-color: #00000099;
+}
+
+.modal__error {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: transparent;
+  height: 0;
+  transition: color 120ms ease-in-out, height 120ms ease-in-out;
+}
+
+.modal__error_visible {
+  color: #d0021b;
+  height: auto;
+}

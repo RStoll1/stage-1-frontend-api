@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 80px 416px;
+  margin: 80px 416px 0 416px;
 }
 
 .main__title {
