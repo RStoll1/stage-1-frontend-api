@@ -8,7 +8,11 @@ function Footer() {
     <footer className="footer">
       <p className="footer__text">© 2026 Supersite, Powered by News API</p>
       <div className="footer__links">
-        <NavLink to="/" className="footer__link">
+        <NavLink
+          to="/"
+          className="footer__link"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
           Home
         </NavLink>
         <a
@@ -19,15 +23,22 @@ function Footer() {
         >
           TripleTen
         </a>
-        <NavLink to="http://www.github.com/RStoll1" className="footer__icon">
-          <img src={Github} alt="GitHub" className="footer__github" />
-        </NavLink>
-        <NavLink
-          to="https://www.linkedin.com/in/ryanstolinski"
+        <a
+          href="http://www.github.com/RStoll1"
           className="footer__icon"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={Github} alt="GitHub" className="footer__github" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ryanstolinski"
+          className="footer__icon"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <img src={LinkedIn} alt="LinkedIn" className="footer__linkedin" />
-        </NavLink>
+        </a>
       </div>
     </footer>
   );
