@@ -1,5 +1,6 @@
 import React from "react";
 import "./SearchForm.css";
+import Preloader from "../Preloader/Preloader";
 
 function SearchForm() {
   return (

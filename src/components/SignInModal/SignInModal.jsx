@@ -1,7 +1,7 @@
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation.js";
 
-function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
+function SignInModal({ isOpen, onClose, onSwitchToRegister }) {
   const defaultValues = { email: "", password: "" };
 
   const { values, errors, touched, handleChange, handleSubmit, showErrors } =
@@ -9,8 +9,8 @@ function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
 
   return (
     <ModalWithForm
-      title="Login"
-      buttonText="Log In"
+      title="Sign in"
+      buttonText="Sign in"
       isOpen={isOpen}
       onClose={onClose}
       //   onSubmit={handleSubmit}
@@ -41,7 +41,9 @@ function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
           required
         />
         {(showErrors || touched.email) && errors.email && (
-          <span className="modal__error">{errors.email}</span>
+          <span className="modal__error modal__error_visible">
+            {errors.email}
+          </span>
         )}
       </label>
 
@@ -62,11 +64,13 @@ function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
           required
         />
         {(showErrors || touched.password) && errors.password && (
-          <span className="modal__error">{errors.password}</span>
+          <span className="modal__error modal__error_visible">
+            {errors.password}
+          </span>
         )}
       </label>
     </ModalWithForm>
   );
 }
 
-export default LoginModal;
+export default SignInModal;

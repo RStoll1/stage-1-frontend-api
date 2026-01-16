@@ -1,40 +1,28 @@
-import { useCallback, useState } from "react";
-
+import { useState } from "react";
 
 export function useFormWithValidation(defaultValues = {}) {
     const [values, setValues] = useState(defaultValues);
     const [errors, setErrors] = useState({});
-    const [isValid, setIsValid] = useState(false);
     const [showErrors, setShowErrors] = useState(false);
     const [touched, setTouched] = useState({});
 
     function validateField(name, value) {
-        // return an error message string (empty when valid)
+        const v = String(value ?? "").trim();
+
         if (name === "name") {
-            if (!value || String(value).trim() === "") return "Name is required.";
-            if (String(value).length > 60) return "Name must be 60 characters or fewer.";
+            if (!v) return "Name is required.";
+            if (v.length > 60) return "Name must be 60 characters or fewer.";
             return "";
         }
+
         if (name === "email") {
-            if (!value || String(value).trim() === "") return "Email is required.";
+            if (!v) return "Email is required.";
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(v)) return "Invalid email address.";
             return "";
         }
-    }
 
-    function validateAll(currentValues = values) {
-        const nextErrors = {};
-        Object.keys(defaultValues).forEach((key) => {
-            nextErrors[key] = validateField(key, currentValues[key]);
-        });
-        // also handle cases where defaultValues doesn't contain keys (defensive)
-        Object.keys(currentValues).forEach((key) => {
-            if (!(key in nextErrors)) nextErrors[key] = validateField(key, currentValues[key]);
-        });
-
-        const formIsValid = !Object.values(nextErrors).some((msg) => Boolean(msg));
-        setErrors(nextErrors);
-        setIsValid(formIsValid);
-        return { nextErrors, formIsValid };
+        return "";
     }
 
     function handleChange(evt) {
@@ -45,44 +33,20 @@ export function useFormWithValidation(defaultValues = {}) {
             const next = { ...prev, [name]: fieldValue };
             // mark field as touched
             setTouched((prevTouched) => ({ ...prevTouched, [name]: true }));
-            // validate field and overall on each change
-            validateAll(next);
+            // validate just this field
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                [name]: validateField(name, fieldValue),
+            }));
             return next;
         });
     }
 
-    function handleSubmitAttempt() {
-        setShowErrors(true);
-        const { formIsValid, nextErrors } = validateAll();
-        // mark all fields as touched so errors become visible
-        const allTouched = {};
-        Object.keys(nextErrors).forEach((k) => (allTouched[k] = true));
-        setTouched(allTouched);
-        return formIsValid;
-    }
-
-    const resetForm = useCallback(
-        (newValues = defaultValues, newErrors = {}, newIsValid = false) => {
-            setValues(newValues);
-            setErrors(newErrors);
-            setIsValid(newIsValid);
-            setShowErrors(false);
-        },
-        [defaultValues]
-    );
-
     return {
         values,
         errors,
-        isValid,
         showErrors,
         touched,
         handleChange,
-        handleSubmitAttempt,
-        resetForm,
-        setValues,
-        setErrors,
-        setShowErrors,
-        setTouched,
     };
 }

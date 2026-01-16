@@ -89,25 +89,21 @@
   border-bottom: 1px solid #000;
 }
 
-.modal__input_type_error {
-  border-bottom: 2px solid #d0021b;
-  outline: none;
-}
 .modal__input::placeholder {
   color: #8a8a8a;
 }
 
 .modal__submit {
-  border-radius: 4px;
-  padding: 8px 16px;
+  border-radius: 100px;
+  padding: 20px 115px;
   border-style: none;
-  background-color: #000;
+  background-color: #2f71e5;
   color: #fff;
-  font-family: "Cabinet", Arial, Helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  width: 30%;
+  font-size: 18px;
+  line-height: 24px;
+  width: 100%;
 }
 
 .modal__submit:hover {

@@ -1,5 +1,4 @@
-/* Extend header background across Header + Main */
-.page__content {
+.page__content--with-bg {
   background-image: url("../../assets/background_img.svg");
   background-repeat: no-repeat;
   background-size: cover;

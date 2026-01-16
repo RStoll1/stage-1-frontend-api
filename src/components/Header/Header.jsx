@@ -1,26 +1,23 @@
 import React from "react";
 import "./Header.css";
-import { NavLink } from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
 
-function Header({ handleLoginClick }) {
+function Header({ page, handleLoginClick }) {
+  const isSavedNews = page === "saved-news";
+
   return (
     <header className="header">
-      <div className="header__nav">
-        <p id="home-logo" className="header__logo">
+      <div
+        className={`header__container ${
+          isSavedNews ? "header__container--dark" : ""
+        }`}
+      >
+        <p
+          className={`header__logo ${isSavedNews ? "header__logo--dark" : ""}`}
+        >
           NewsExplorer
         </p>
-        <NavLink to="/">
-          <button type="button" className="header_home-btn">
-            Home
-          </button>
-        </NavLink>
-        <button
-          type="button"
-          className="header_signin-btn"
-          onClick={handleLoginClick}
-        >
-          Sign in
-        </button>
+        <Navigation page={page} handleLoginClick={handleLoginClick} />
       </div>
     </header>
   );

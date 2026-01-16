@@ -1,0 +1,34 @@
+.success-modal .modal__content {
+  padding-top: 43px;
+  padding-bottom: 51px;
+}
+
+.success-modal .modal__title {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+}
+
+.success-modal .modal__submit {
+  width: 100%;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  color: #2f71e5;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+
+.success-modal .modal__actions {
+  align-items: stretch;
+}
+
+.success-modal .modal__secondary-button {
+  display: none;
+}

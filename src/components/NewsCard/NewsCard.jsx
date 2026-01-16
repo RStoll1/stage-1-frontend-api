@@ -19,8 +19,7 @@ function NewsCard() {
         <p className="card__text">
           The ruble continued its rapid decline against the US dollar and euro
           on Thursday, as a series of Western sanctions over Russia's invasion
-          of Ukraine battered the currency. This could be the end of the world
-          as we know it and I feel fine.
+          of Ukraine battered the currency.
         </p>
         <p className="card__source">Source: BBC News</p>
       </div>
