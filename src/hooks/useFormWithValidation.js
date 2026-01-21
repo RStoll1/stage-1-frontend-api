@@ -3,7 +3,7 @@ import { useState } from "react";
 export function useFormWithValidation(defaultValues = {}) {
     const [values, setValues] = useState(defaultValues);
     const [errors, setErrors] = useState({});
-    const [showErrors, setShowErrors] = useState(false);
+    const [showErrors] = useState(false);
     const [touched, setTouched] = useState({});
 
     function validateField(name, value) {

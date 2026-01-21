@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./News.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-function News({ articles = [] }) {
+function News({ articles = [], isLoggedIn = false }) {
   const [visibleCount, setVisibleCount] = useState(3);
 
   useEffect(() => {
@@ -22,7 +22,11 @@ function News({ articles = [] }) {
         <h2 className="news__title">Search results</h2>
         <ul className="news__list">
           {visibleArticles.map((article) => (
-            <NewsCard key={article.url} article={article} />
+            <NewsCard
+              key={article.url}
+              article={article}
+              isLoggedIn={isLoggedIn}
+            />
           ))}
         </ul>
         {canShowMore && (

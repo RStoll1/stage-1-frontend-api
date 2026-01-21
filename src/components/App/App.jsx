@@ -56,6 +56,7 @@ function App() {
   const handleLogout = () => {
     logout();
     setCurrentUser(null);
+    navigate("/");
   };
 
   const handleNewsSearch = (keyword) => {
@@ -112,7 +113,9 @@ function App() {
                   <Main onSearch={handleNewsSearch} />
                 </div>
                 {isLoading && <Preloader />}
-                {articles.length > 0 && <News articles={articles} />}
+                {articles.length > 0 && (
+                  <News articles={articles} isLoggedIn={Boolean(currentUser)} />
+                )}
                 <About />
                 <Footer />
               </>
