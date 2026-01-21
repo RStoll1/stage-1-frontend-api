@@ -2,7 +2,13 @@ import React from "react";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 
-function Header({ page, handleLoginClick }) {
+function Header({
+  page,
+  handleLoginClick,
+  handleRegisterClick,
+  currentUser,
+  onLogout,
+}) {
   const isSavedNews = page === "saved-news";
 
   return (
@@ -17,7 +23,13 @@ function Header({ page, handleLoginClick }) {
         >
           NewsExplorer
         </p>
-        <Navigation page={page} handleLoginClick={handleLoginClick} />
+        <Navigation
+          page={page}
+          handleLoginClick={handleLoginClick}
+          handleRegisterClick={handleRegisterClick}
+          currentUser={currentUser}
+          onLogout={onLogout}
+        />
       </div>
     </header>
   );

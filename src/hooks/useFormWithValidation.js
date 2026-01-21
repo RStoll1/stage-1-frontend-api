@@ -22,6 +22,11 @@ export function useFormWithValidation(defaultValues = {}) {
             return "";
         }
 
+        if (name === "keyword") {
+            if (!v) return "Please enter a keyword";
+            return "";
+        }
+
         return "";
     }
 

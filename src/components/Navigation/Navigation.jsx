@@ -3,7 +3,13 @@ import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 import logoutIcon from "../../assets/logout.svg";
 
-function Navigation({ page, handleLoginClick }) {
+function Navigation({
+  page,
+  handleLoginClick,
+  handleRegisterClick,
+  currentUser,
+  onLogout,
+}) {
   const isSavedNews = page === "saved-news";
 
   return (
@@ -29,7 +35,7 @@ function Navigation({ page, handleLoginClick }) {
         </button>
       )}
 
-      {page === "saved-news" && (
+      {page === "saved-news" && currentUser && (
         <>
           <NavLink to="/saved-news">
             <button
@@ -39,8 +45,12 @@ function Navigation({ page, handleLoginClick }) {
               Saved Articles
             </button>
           </NavLink>
-          <button type="button" className="navigation__logout-btn">
-            Elise
+          <button
+            type="button"
+            className="navigation__logout-btn"
+            onClick={onLogout}
+          >
+            {currentUser?.name || "User"}
           </button>
           <img
             src={logoutIcon}

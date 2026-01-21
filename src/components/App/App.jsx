@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -11,9 +11,17 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import Preloader from "../Preloader/Preloader";
 import SuccessModal from "../SuccessModal/SuccessModal";
 import SavedNews from "../SavedNews/SavedNews";
+import { getNews } from "../../utils/newsApi.js";
+import { getItems } from "../../utils/api";
+import { apiKey } from "../../utils/constants.js";
+import { authorize, checkToken, logout } from "../../utils/auth.js";
 
 function App() {
+  const navigate = useNavigate();
   const [activeModal, setActiveModal] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [articles, setArticles] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const handleLoginClick = () => {
     setActiveModal("login");
@@ -28,8 +36,62 @@ function App() {
   };
 
   const handleRegisterSuccess = () => {
-    setActiveModal("success");
+    setActiveModal("");
+    navigate("/saved-news");
   };
+
+  const handleLogin = (email, password) => {
+    authorize(email, password)
+      .then(({ token }) => checkToken(token))
+      .then((res) => {
+        setCurrentUser(res.data);
+        setActiveModal("");
+        navigate("/saved-news");
+      })
+      .catch((err) => {
+        console.error("Mock login failed", err);
+      });
+  };
+
+  const handleLogout = () => {
+    logout();
+    setCurrentUser(null);
+  };
+
+  const handleNewsSearch = (keyword) => {
+    setIsLoading(true);
+    const params = {
+      q: keyword,
+      from: "2026-01-19",
+      to: "2026-12-20",
+      pageSize: 100,
+    };
+    getNews(params)
+      .then((data) => {
+        console.log("News search results:", data);
+        setArticles(data.articles || []);
+      })
+      .catch((err) => {
+        console.error("Error fetching news:", err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      checkToken(token)
+        .then((res) => {
+          setCurrentUser(res.data);
+        })
+        .catch(() => {
+          logout();
+          setCurrentUser(null);
+        });
+    }
+  }, []);
 
   return (
     <>
@@ -44,11 +106,13 @@ function App() {
                     page="home"
                     handleLoginClick={handleLoginClick}
                     handleRegisterClick={handleRegisterClick}
+                    currentUser={currentUser}
+                    onLogout={handleLogout}
                   />
-                  <Main />
+                  <Main onSearch={handleNewsSearch} />
                 </div>
-                <Preloader />
-                <News />
+                {isLoading && <Preloader />}
+                {articles.length > 0 && <News articles={articles} />}
                 <About />
                 <Footer />
               </>
@@ -63,6 +127,8 @@ function App() {
                     page="saved-news"
                     handleLoginClick={handleLoginClick}
                     handleRegisterClick={handleRegisterClick}
+                    currentUser={currentUser}
+                    onLogout={handleLogout}
                   />
                   <SavedNews />
                 </div>
@@ -76,8 +142,7 @@ function App() {
       <SignInModal
         isOpen={activeModal === "login"}
         onClose={handleCloseModal}
-        onLogin={() => {}}
-        isLoginDisabled={false}
+        onLogin={handleLogin}
         onSwitchToRegister={handleRegisterClick}
       />
       <RegisterModal

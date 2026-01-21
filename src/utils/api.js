@@ -1,0 +1,85 @@
+const baseUrl = process.env.NODE_ENV === 'production'
+    ? "https://api.newssearch.mysaol.com/news/v2/everything"
+    : 'http://localhost:3000';
+
+export const handleServerResponse = (res) => {
+    if (res.ok) {
+        return res.json();
+    }
+    return res.json().then((err) => Promise.reject(err));
+};
+
+// getItems returns a promise that resolves to an array
+// of article data. You can render this array on the 
+// /saved-news route.
+export function getItems() {
+    return new Promise((resolve, reject) => resolve([
+        {
+            _id: "65f7368dfb74bd6a92114c85",
+            source: {
+                name: "Source Name",
+                id: "source-id"
+            },
+            title: "News article title",
+            description: "News article description",
+            url: "News article URL",
+            urlToImage: "News article image URL",
+            publishedAt: "2026-01-15T12:34:56Z",
+            content: "News Article Content. Whatever it may be"
+
+
+        },
+        {
+            _id: "696f314dc612422a711a0d97",
+            source: {
+                name: "Source Name",
+                id: "source-id"
+            },
+            author: "Author Name",
+            title: "News article title",
+            description: "News article description",
+            url: "News article URL",
+            urlToImage: "News article image URL",
+            publishedAt: "2026-01-15T12:34:56Z",
+            content: "News Article Content. Whatever it may be"
+
+
+        },
+        {
+            _id: "696f3159401bb5a2ec0e3120",
+            source: {
+                name: "Source Name",
+                id: "source-id"
+            },
+            title: "News article title",
+            description: "News article description",
+            url: "News article URL",
+            urlToImage: "News article image URL",
+            publishedAt: "2026-01-15T12:34:56Z",
+            content: "News Article Content. Whatever it may be"
+
+
+        },
+
+    ]))
+}
+
+// saveArticle accepts an article object as an argument and
+// pretends to save it to the DB. It returns a promise that
+// resolves to the "saved" article, and an _id field to it.
+// Add this article to your array of saved news items.
+export function saveArticle(article) {
+    // article is a search result from the NewsAPI
+    return new Promise((resolve, reject) => {
+        resolve({
+            _id: "65f7371e7bce9e7d331b11a0",
+            source: article.source.name,
+            publishedAt: article.publishedAt,
+            description: article.description,
+            url: article.url,
+            title: article.title,
+            urlToImage: article.urlToImage
+
+        })
+    })
+}

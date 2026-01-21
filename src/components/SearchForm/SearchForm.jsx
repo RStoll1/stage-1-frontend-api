@@ -1,18 +1,44 @@
 import React from "react";
 import "./SearchForm.css";
-import Preloader from "../Preloader/Preloader";
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-function SearchForm() {
+// onSearch will be passed from App and should
+// trigger the request (or mock) when the input is valid.
+function SearchForm({ onSearch }) {
+  const { values, errors, handleChange } = useFormWithValidation({
+    keyword: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const value = (values.keyword || "").trim();
+
+    if (!value) {
+      return;
+    }
+
+    if (typeof onSearch === "function") {
+      onSearch(value);
+    }
+  };
+
   return (
-    <form className="search-form" onSubmit={(e) => e.preventDefault()}>
+    <form className="search-form" onSubmit={handleSubmit}>
       <input
         type="text"
+        name="keyword"
         placeholder="Enter topic"
         className="search-form__input"
+        value={values.keyword || ""}
+        onChange={handleChange}
       />
       <button type="submit" className="search-form__button">
         Search
       </button>
+      {errors.keyword && (
+        <span className="search-form__error">{errors.keyword}</span>
+      )}
     </form>
   );
 }

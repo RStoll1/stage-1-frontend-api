@@ -1,11 +1,24 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation.js";
 
-function SignInModal({ isOpen, onClose, onSwitchToRegister }) {
+function SignInModal({ isOpen, onClose, onSwitchToRegister, onLogin }) {
   const defaultValues = { email: "", password: "" };
 
-  const { values, errors, touched, handleChange, handleSubmit, showErrors } =
+  const { values, errors, touched, handleChange, showErrors } =
     useFormWithValidation(defaultValues);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // basic guard: don't submit if there are validation errors
+    if (errors.email || errors.password) {
+      return;
+    }
+
+    if (typeof onLogin === "function") {
+      onLogin(values.email, values.password);
+    }
+  };
 
   return (
     <ModalWithForm
@@ -13,7 +26,7 @@ function SignInModal({ isOpen, onClose, onSwitchToRegister }) {
       buttonText="Sign in"
       isOpen={isOpen}
       onClose={onClose}
-      //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       secondaryAction={
         <button
           type="button"
