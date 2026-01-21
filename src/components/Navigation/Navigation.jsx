@@ -3,13 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 import logoutIcon from "../../assets/logout.svg";
 
-function Navigation({
-  page,
-  handleLoginClick,
-  handleRegisterClick,
-  currentUser,
-  onLogout,
-}) {
+function Navigation({ page, handleLoginClick, currentUser, onLogout }) {
   const isSavedNews = page === "saved-news";
 
   return (

@@ -67,10 +67,10 @@ function App() {
       to: "2026-12-20",
       pageSize: 100,
     };
+
     getNews(params)
       .then((data) => {
-        console.log("News search results:", data);
-        setArticles(data.articles || []);
+        setArticles(data.articles);
       })
       .catch((err) => {
         console.error("Error fetching news:", err);

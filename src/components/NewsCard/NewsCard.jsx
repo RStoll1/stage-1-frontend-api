@@ -9,8 +9,8 @@ import deleteIcon from "../../assets/closebtn.svg";
 function NewsCard({ article, isSaved = false, isLoggedIn = false }) {
   const { title, description, urlToImage, publishedAt, source } = article || {};
 
-  const displayTitle = title || "News title";
-  const displayText = description || "Article description";
+  const displayTitle = title;
+  const displayText = description;
   const displayDate = publishedAt
     ? new Date(publishedAt).toLocaleDateString("en-US", {
         year: "numeric",

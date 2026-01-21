@@ -10,9 +10,7 @@ function SearchForm({ onSearch }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const value = (values.keyword || "").trim();
-
-    if (!value) {
+    if (!values.keyword) {
       handleChange({
         target: {
           name: "keyword",
@@ -25,7 +23,7 @@ function SearchForm({ onSearch }) {
     }
 
     if (typeof onSearch === "function") {
-      onSearch(value);
+      onSearch(values.keyword);
     }
   };
 
