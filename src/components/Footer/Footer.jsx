@@ -8,37 +8,41 @@ function Footer() {
     <footer className="footer">
       <p className="footer__text">© 2026 Supersite, Powered by News API</p>
       <div className="footer__links">
-        <NavLink
-          to="/"
-          className="footer__link"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        >
-          Home
-        </NavLink>
-        <a
-          href="http://www.tripleten.com"
-          className="footer__link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          TripleTen
-        </a>
-        <a
-          href="http://www.github.com/RStoll1"
-          className="footer__icon"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={Github} alt="GitHub" className="footer__github" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/ryanstolinski"
-          className="footer__icon"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={LinkedIn} alt="LinkedIn" className="footer__linkedin" />
-        </a>
+        <div className="footer__links-left">
+          <NavLink
+            to="/"
+            className="footer__link"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            Home
+          </NavLink>
+          <a
+            href="http://www.tripleten.com"
+            className="footer__link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TripleTen
+          </a>
+        </div>
+        <div className="footer__links-right">
+          <a
+            href="http://www.github.com/RStoll1"
+            className="footer__icon"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={Github} alt="GitHub" className="footer__github" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ryanstolinski"
+            className="footer__icon"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={LinkedIn} alt="LinkedIn" className="footer__linkedin" />
+          </a>
+        </div>
       </div>
     </footer>
   );

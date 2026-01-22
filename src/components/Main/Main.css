@@ -22,3 +22,39 @@
   color: #ffffff;
   margin: 32px 0 88px 0;
 }
+
+@media screen and (max-width: 1439px) {
+  .main__container {
+    margin: 38px 220px 16px 168px;
+  }
+
+  .main__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-right: -15px;
+  }
+
+  .main__subtitle {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 16px -65px 48px 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .main__container {
+    margin: 30px 16px 16px 16px;
+  }
+
+  .main__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-right: 0;
+  }
+
+  .main__subtitle {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 16px 0 122px 0;
+  }
+}

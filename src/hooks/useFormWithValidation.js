@@ -9,7 +9,7 @@ export function useFormWithValidation(defaultValues = {}) {
     function validateField(name, value) {
         const v = String(value ?? "").trim();
 
-        if (name === "name") {
+        if (name === "name" || name === "username") {
             if (!v) return "Name is required.";
             if (v.length > 60) return "Name must be 60 characters or fewer.";
             return "";
@@ -19,6 +19,12 @@ export function useFormWithValidation(defaultValues = {}) {
             if (!v) return "Email is required.";
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(v)) return "Invalid email address.";
+            return "";
+        }
+
+        if (name === "password") {
+            if (!v) return "Password is required.";
+            if (v.length < 6) return "Password must be at least 6 characters.";
             return "";
         }
 

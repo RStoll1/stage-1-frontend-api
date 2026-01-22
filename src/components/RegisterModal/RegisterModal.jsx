@@ -11,8 +11,20 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onSwitchToLogin }) => {
   const { values, handleChange, errors, showErrors, touched } =
     useFormWithValidation(defaultValues);
 
+  const isSubmitDisabled =
+    !values.email ||
+    !values.password ||
+    !values.username ||
+    Boolean(errors.email) ||
+    Boolean(errors.password) ||
+    Boolean(errors.username);
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (isSubmitDisabled) {
+      return;
+    }
+
     if (onRegister) {
       onRegister();
     }
@@ -25,13 +37,14 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onSwitchToLogin }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isSubmitDisabled={isSubmitDisabled}
       secondaryAction={
         <button
           type="button"
           className="modal__secondary-button"
           onClick={onSwitchToLogin}
         >
-          or Log In
+          <span className="modal__span-btntext">or</span> Log In
         </button>
       }
     >

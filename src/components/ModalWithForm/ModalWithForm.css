@@ -17,10 +17,10 @@
 
 .modal__title {
   margin: 0 0 24px;
-  font-family: "Cabinet", Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
 }
 
 .modal__close {
@@ -30,6 +30,14 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.modal__close-icon {
+  display: block;
+}
+
+.modal__close-icon--mobile {
+  display: none;
 }
 
 .modal__content {
@@ -62,19 +70,27 @@
   border: none;
   padding: 8px 0;
   cursor: pointer;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  font-size: 16px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
   line-height: 20px;
-  color: #00000080;
+  color: #2f71e5;
+}
+
+.modal__span-btntext {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: #000;
 }
 
 .modal__label {
-  font-family: "Cabinet", Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  color: #000;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: #2f71e5;
 }
 
 .modal__legend {
@@ -83,14 +99,24 @@
 
 .modal__input {
   display: block;
-  margin-top: 8px;
   width: 100%;
   border: none;
   border-bottom: 1px solid #000;
+  margin-top: 9px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
 }
 
 .modal__input::placeholder {
-  color: #8a8a8a;
+  color: #00000080;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
 }
 
 .modal__submit {
@@ -110,16 +136,56 @@
   background-color: #00000099;
 }
 
+.modal__submit:disabled {
+  background-color: #e6e8eb;
+  color: #b6bcbf;
+  cursor: default;
+}
+
+.modal__submit:disabled:hover {
+  background-color: #e6e8eb;
+}
+
 .modal__error {
   display: block;
   margin-top: 6px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
   font-size: 12px;
+  line-height: 100%;
   color: transparent;
   height: 0;
-  transition: color 120ms ease-in-out, height 120ms ease-in-out;
+  transition:
+    color 120ms ease-in-out,
+    height 120ms ease-in-out;
 }
 
 .modal__error_visible {
-  color: #d0021b;
+  color: #ff0000;
   height: auto;
+}
+
+@media screen and (max-width: 550px) {
+  .modal__content {
+    padding: 20px 16px 24px;
+    max-width: 327px;
+    height: 100%;
+    top: 61px;
+  }
+  .modal__close {
+    top: -46px;
+    right: 11px;
+  }
+}
+
+.modal__close-icon--desktop {
+  display: none;
+}
+
+.modal__close-icon--mobile {
+  display: block;
+}
+
+.modal__submit {
+  padding: 16px 0;
 }

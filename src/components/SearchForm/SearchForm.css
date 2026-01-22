@@ -49,3 +49,41 @@
   bottom: 60px;
   left: 24px;
 }
+
+@media screen and (max-width: 1439px) {
+  .search-form__input {
+    margin-top: 122px;
+    top: -58px;
+  }
+
+  .search-form__button {
+    height: 56px;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 16px 40px;
+  }
+
+  .search-form__error {
+    bottom: 28px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .search-form__input {
+    height: 48px;
+    margin-bottom: 32px;
+  }
+
+  .search-form__button {
+    height: 48px;
+    width: 100%;
+    padding: 16px 116px 16px 116px;
+    margin: 16px 0 32px 0;
+    top: 112px;
+  }
+
+  .search-form__error {
+    bottom: 24px;
+    top: 179px;
+  }
+}

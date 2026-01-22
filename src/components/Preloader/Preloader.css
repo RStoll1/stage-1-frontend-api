@@ -38,3 +38,28 @@
     transform: rotate(360deg);
   }
 }
+
+.preloader--nothing-found {
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader__nothing-found-text {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  color: #1a1b22;
+  text-align: center;
+}
+
+.preloader__nothing-found-subtext {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #b6bcbf;
+  margin-top: 16px;
+  text-align: center;
+  max-width: 250px;
+}

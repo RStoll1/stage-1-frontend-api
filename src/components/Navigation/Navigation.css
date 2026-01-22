@@ -47,7 +47,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  color: #000000;
+  color: #ffffff;
   background: transparent;
   border: none;
   margin-right: 40px;
@@ -62,7 +62,7 @@
   right: 0;
   height: 3px;
   width: 150px;
-  background: #000000;
+  background: #ffffff;
   bottom: -26px;
   pointer-events: none;
   z-index: 1;
@@ -75,9 +75,9 @@
   line-height: 24px;
   width: 112px;
   height: 48px;
-  color: #000000;
+  color: #ffffff;
   background: transparent;
-  border: 1px solid #000000;
+  border: 1px solid #ffffff;
   border-radius: 24px;
   padding: 12px 54px 12px 19px;
   cursor: pointer;
@@ -88,9 +88,110 @@
   position: absolute;
   right: 120px;
   top: 32px;
+  filter: invert(1);
+  cursor: pointer;
 }
 
 .navigation--dark .navigation__home-btn {
   color: #1a1b22;
   border-color: #1a1b22;
+}
+
+.navigation--dark .navigation__saved-articles-btn {
+  color: #1a1b22;
+}
+
+.navigation--dark .navigation__saved-articles-btn--active::after {
+  background: #1a1b22;
+}
+
+.navigation--dark .navigation__logout-btn {
+  color: #1a1b22;
+  border-color: #1a1b22;
+}
+
+.navigation--dark .navigation__logout-icon {
+  filter: none;
+}
+
+.navigation__mobile-menu {
+  display: none;
+}
+
+.navigation__mobile-panel {
+  display: none;
+}
+
+.navigation__mobile-overlay {
+  display: none;
+}
+
+@media screen and (max-width: 1439px) {
+  .navigation__logout-icon {
+    right: 55px;
+    top: 35px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .navigation__home-btn,
+  .navigation__saved-articles-btn,
+  .navigation__signin-btn,
+  .navigation__logout-btn,
+  .navigation__logout-icon {
+    display: none;
+  }
+
+  .navigation__mobile-menu {
+    display: block;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .navigation__mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0000004d;
+    display: block;
+    z-index: 0;
+  }
+
+  .navigation__mobile-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1px;
+    height: 200px;
+    gap: 20px;
+    background-color: #1a1b22;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    box-sizing: border-box;
+  }
+
+  .navigation__mobile-link {
+    width: 100%;
+    text-align: left;
+    font-family: "Roboto Slab", serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    padding: 12px 0;
+  }
+
+  .navigation__mobile-link--primary {
+    margin-top: 16px;
+    border-radius: 24px;
+    border: 1px solid #ffffff;
+    text-align: center;
+  }
 }

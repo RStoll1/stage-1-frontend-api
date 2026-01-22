@@ -8,12 +8,10 @@ import Footer from "../Footer/Footer";
 import News from "../News/News";
 import SignInModal from "../SignInModal/SignInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import Preloader from "../Preloader/Preloader";
+import Preloader, { NothingFound } from "../Preloader/Preloader";
 import SuccessModal from "../SuccessModal/SuccessModal";
 import SavedNews from "../SavedNews/SavedNews";
 import { getNews } from "../../utils/newsApi.js";
-import { getItems } from "../../utils/api";
-import { apiKey } from "../../utils/constants.js";
 import { authorize, checkToken, logout } from "../../utils/auth.js";
 
 function App() {
@@ -22,6 +20,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const handleLoginClick = () => {
     setActiveModal("login");
@@ -46,7 +45,6 @@ function App() {
       .then((res) => {
         setCurrentUser(res.data);
         setActiveModal("");
-        navigate("/saved-news");
       })
       .catch((err) => {
         console.error("Mock login failed", err);
@@ -60,6 +58,7 @@ function App() {
   };
 
   const handleNewsSearch = (keyword) => {
+    setHasSearched(true);
     setIsLoading(true);
     const params = {
       q: keyword,
@@ -109,10 +108,14 @@ function App() {
                     handleRegisterClick={handleRegisterClick}
                     currentUser={currentUser}
                     onLogout={handleLogout}
+                    isModalOpen={activeModal !== ""}
                   />
                   <Main onSearch={handleNewsSearch} />
                 </div>
                 {isLoading && <Preloader />}
+                {!isLoading && hasSearched && articles.length === 0 && (
+                  <NothingFound />
+                )}
                 {articles.length > 0 && (
                   <News articles={articles} isLoggedIn={Boolean(currentUser)} />
                 )}
@@ -132,6 +135,7 @@ function App() {
                     handleRegisterClick={handleRegisterClick}
                     currentUser={currentUser}
                     onLogout={handleLogout}
+                    isModalOpen={activeModal !== ""}
                   />
                   <SavedNews />
                 </div>

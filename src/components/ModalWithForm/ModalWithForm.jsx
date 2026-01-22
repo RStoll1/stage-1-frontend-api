@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import "./ModalWithForm.css";
 import closeIcon from "../../assets/closebtn.svg";
+import mobileCloseBtn from "../../assets/mobile_close_btn.svg";
 
 function ModalWithForm({
   children,
@@ -39,7 +40,16 @@ function ModalWithForm({
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button onClick={onClose} type="button" className="modal__close">
-          <img src={closeIcon} alt="Close" />
+          <img
+            src={closeIcon}
+            alt="Close"
+            className="modal__close-icon modal__close-icon--desktop"
+          />
+          <img
+            src={mobileCloseBtn}
+            alt="Close"
+            className="modal__close-icon modal__close-icon--mobile"
+          />
         </button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
@@ -55,6 +65,7 @@ function ModalWithForm({
           </div>
         </form>
       </div>
+      <img src="" alt="" className="modal__keyboard-underlay" />
     </div>
   );
 }

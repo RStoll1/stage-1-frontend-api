@@ -7,11 +7,16 @@ function SignInModal({ isOpen, onClose, onSwitchToRegister, onLogin }) {
   const { values, errors, touched, handleChange, showErrors } =
     useFormWithValidation(defaultValues);
 
+  const isSubmitDisabled =
+    !values.email ||
+    !values.password ||
+    Boolean(errors.email) ||
+    Boolean(errors.password);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // basic guard: don't submit if there are validation errors
-    if (errors.email || errors.password) {
+    if (isSubmitDisabled) {
       return;
     }
 
@@ -27,13 +32,14 @@ function SignInModal({ isOpen, onClose, onSwitchToRegister, onLogin }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isSubmitDisabled={isSubmitDisabled}
       secondaryAction={
         <button
           type="button"
           className="modal__secondary-button"
           onClick={onSwitchToRegister}
         >
-          or Register
+          <span className="modal__span-btntext">or</span> Register
         </button>
       }
     >

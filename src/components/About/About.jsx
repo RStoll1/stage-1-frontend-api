@@ -4,7 +4,7 @@ import avatar from "../../assets/placeholder_img.svg";
 function About() {
   return (
     <section className="about">
-      <img src={avatar} alt="Avatar" />
+      <img className="about__avatar" src={avatar} alt="Avatar" />
       <div className="about__info">
         <h2 className="about__title">About the Author</h2>
         <p className="about__text">
