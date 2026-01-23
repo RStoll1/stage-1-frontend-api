@@ -12,6 +12,7 @@ import { useState } from "react";
 function NewsCard({ article, isSaved = false, isLoggedIn = false }) {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [deleteHovered, setDeleteHovered] = useState(false);
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const { title, description, urlToImage, publishedAt, source } = article || {};
 
   const displayTitle = title;
@@ -41,6 +42,20 @@ function NewsCard({ article, isSaved = false, isLoggedIn = false }) {
     setIsBookmarked((prev) => !prev);
   };
 
+  const canShowTooltip = !isSaved && !isLoggedIn;
+
+  const handleBookmarkMouseEnter = () => {
+    if (canShowTooltip) {
+      setIsTooltipVisible(true);
+    }
+  };
+
+  const handleBookmarkMouseLeave = () => {
+    if (canShowTooltip) {
+      setIsTooltipVisible(false);
+    }
+  };
+
   return (
     <li className="card">
       <div className="card__header">
@@ -59,10 +74,18 @@ function NewsCard({ article, isSaved = false, isLoggedIn = false }) {
             alt="Bookmark"
             className="card__bookmark"
             onClick={handleBookmarkClick}
+            onMouseEnter={handleBookmarkMouseEnter}
+            onMouseLeave={handleBookmarkMouseLeave}
           />
         )}
-        {!isSaved && !isLoggedIn && (
-          <img src={tooltipIcon} alt="Tooltip" className="card__tooltip" />
+        {canShowTooltip && (
+          <img
+            src={tooltipIcon}
+            alt="Sign in to save articles"
+            className={`card__tooltip ${
+              isTooltipVisible ? "card__tooltip--visible" : ""
+            }`}
+          />
         )}
 
         {isSaved && (

@@ -34,7 +34,7 @@
   left: 20px;
 }
 
-.card__bookmark:hover ~ .card__tooltip {
+.card__tooltip--visible {
   visibility: visible;
 }
 

@@ -27,6 +27,6 @@ NewsExplorer is a React single-page application that lets users search for news 
 
 ### Deployment
 
-GitHub Pages link (to be added):
+GitHub Pages link: [https://rstoll1.github.io/stage-1-frontend-api/]
 
-**Live demo:** _TBD – add GitHub Pages URL here_
+**Live demo:** [https://drive.google.com/file/d/1yGtwXmDOCG72CE4Fy6n4cS2oouLQm2Z6/view?usp=sharing]

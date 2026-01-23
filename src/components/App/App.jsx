@@ -34,9 +34,16 @@ function App() {
     setActiveModal("register");
   };
 
-  const handleRegisterSuccess = () => {
-    setActiveModal("");
-    navigate("/saved-news");
+  const handleRegisterSuccess = (email, password) => {
+    authorize(email, password)
+      .then(({ token }) => checkToken(token))
+      .then((res) => {
+        setCurrentUser(res.data);
+        setActiveModal("success");
+      })
+      .catch((err) => {
+        console.error("Mock register/login failed", err);
+      });
   };
 
   const handleLogin = (email, password) => {

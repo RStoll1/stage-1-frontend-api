@@ -26,7 +26,7 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onSwitchToLogin }) => {
     }
 
     if (onRegister) {
-      onRegister();
+      onRegister(values.email, values.password, values.username);
     }
   };
 
