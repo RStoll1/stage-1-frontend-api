@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 
@@ -12,6 +12,10 @@ function Header({
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isSavedNews = page === "saved-news";
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [page]);
 
   const handleToggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);

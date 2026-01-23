@@ -24,10 +24,14 @@ function SavedNews() {
           Elise, you have {savedArticles.length} saved articles
         </h1>
         <div className="saved-news__keyword-container">
-          <p className="saved-news__by-keywords">By keywords: </p>
-          <p className="saved-news__keywords">
-            Nature, Yellowstone and 2 others
+          <p className="saved-news__by-keywords">
+            By keywords:
+            <span className="saved-news__keywords-main">
+              {" "}
+              Nature, Yellowstone,
+            </span>
           </p>
+          <p className="saved-news__keywords-rest">and 2 others.</p>
         </div>
       </div>
       <div className="saved-news__cards">

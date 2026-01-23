@@ -49,6 +49,15 @@
     line-height: 24px;
   }
 
+  .header__container--dark {
+    background-color: #1a1b22;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .header__logo--dark {
+    color: #ffffff;
+  }
+
   .header__container--menu-open {
     background-color: #1a1b22;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
