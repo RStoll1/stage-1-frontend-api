@@ -1,0 +1,21 @@
+.page__content--with-bg {
+  background-image: url("../../assets/background_img.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+}
+
+@media screen and (max-width: 1439px) {
+  .page__content--with-bg {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .page__content--with-bg {
+    background-size: cover;
+    background-position: center center;
+  }
+}

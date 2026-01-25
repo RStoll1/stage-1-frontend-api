@@ -1,0 +1,60 @@
+.main__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 80px 416px 0 416px;
+}
+
+.main__title {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.main__subtitle {
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  margin: 32px 0 88px 0;
+}
+
+@media screen and (max-width: 1439px) {
+  .main__container {
+    margin: 38px 220px 16px 168px;
+  }
+
+  .main__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-right: -15px;
+  }
+
+  .main__subtitle {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 16px -65px 48px 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .main__container {
+    margin: 30px 16px 16px 16px;
+  }
+
+  .main__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-right: 0;
+  }
+
+  .main__subtitle {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 16px 0 122px 0;
+  }
+}

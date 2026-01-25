@@ -1,0 +1,147 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  min-height: 576px;
+  width: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card__image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card__bookmark {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.card__tooltip {
+  position: absolute;
+  top: 8px;
+  right: 43px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.card__keyword-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.card__tooltip--visible {
+  visibility: visible;
+}
+
+.card__body {
+  padding: 20px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  flex-grow: 1;
+}
+
+.card__date {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #b6bcbf;
+}
+
+.card__title {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  color: #1a1b22;
+  margin: 8px 0 16px 0;
+}
+
+.card__text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a1b22;
+  margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.card__source {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  color: #b6bcbf;
+}
+
+@media screen and (max-width: 1439px) {
+  .card {
+    width: 224px;
+    min-height: 420px;
+  }
+
+  .card__body {
+    padding: 16px;
+  }
+
+  .card__date {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+  }
+
+  .card__title {
+    font-size: 22px;
+    line-height: 24px;
+    margin: 12px 0 10px 0;
+  }
+
+  .card__text {
+    font-size: 16px;
+    line-height: 22px;
+    -webkit-line-clamp: 4;
+  }
+
+  .card__source {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 12px 0 0 0;
+  }
+
+  .card__bookmark {
+    top: 12px;
+    right: 12px;
+    height: 30px;
+    width: 30px;
+  }
+
+  .card__tooltip {
+    top: 4px;
+    right: 28px;
+    height: 60px;
+  }
+
+  .card__keyword-btn {
+    top: 10px;
+    left: 12px;
+    height: 36px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .card {
+    width: 100%;
+    min-height: 420px;
+  }
+}
