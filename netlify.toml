@@ -4,3 +4,8 @@
 
 [functions]
   directory = "netlify/functions"
+
+[dev]
+  command = "vite"
+  port = 3000
+  targetPort = 5173
