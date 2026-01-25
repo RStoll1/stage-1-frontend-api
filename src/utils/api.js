@@ -53,7 +53,7 @@ export function getItems() {
         publishedAt: "2026-01-15T12:34:56Z",
         content: "News Article Content. Whatever it may be",
       },
-    ])
+    ]),
   );
 }
 
