@@ -1,7 +1,7 @@
 export const baseUrl =
   process.env.NODE_ENV === "production"
     ? "/.netlify/functions/news-proxy"
-    : "http://localhost:3000";
+    : "/.netlify/functions/news-proxy";
 
 export const handleServerResponse = (res) => {
   if (res.ok) {
